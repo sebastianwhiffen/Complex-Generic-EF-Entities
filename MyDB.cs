@@ -35,8 +35,15 @@ public static class ModelBuilderHelper
                 var genericType = typeToMap.ImplementationType.MakeGenericType(type);
                 var entityTypeBuilder = modelBuilder.Entity(genericType);
                 var dataProperty = genericType.GetProperty("Data");
-                entityTypeBuilder.OwnsOne(dataProperty.PropertyType, dataProperty.Name);
+
+                entityTypeBuilder.HasOne(dataProperty.PropertyType, dataProperty.Name)
+                    .WithOne()
+                    .HasForeignKey(genericType, $"{dataProperty.Name}ID");
+
+                var foreignKeyProperty = genericType.GetProperty($"{dataProperty.Name}ID");
+                if (foreignKeyProperty == null) entityTypeBuilder.Property<int>($"{dataProperty.Name}ID");
             }
         }
     }
+
 }

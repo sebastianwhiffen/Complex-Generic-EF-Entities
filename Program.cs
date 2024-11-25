@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 var options = new DbContextOptionsBuilder<MyDB>()
-    .UseSqlite("Data Source=:memory:")
+    .UseSqlite("Data Source=MyDb.db")
     .Options;
 
-using var context = new MyDB(options);
+var context = new MyDB(options);
 context.Database.OpenConnection();
 context.Database.EnsureCreated();
 
