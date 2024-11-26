@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 
@@ -47,3 +48,26 @@ public static class ModelBuilderHelper
     }
 
 }
+
+//the entity table is a constant, just contains things like date updated, date created and ID
+
+//the client table is variable and begins the true test, as it can and should work in conjunction with... eg: partner.
+//we should be able to have as many of these umbrella types as we want while keeping the sub tables (Individuals, Companies, SoleTraders) untouched
+//say in the future we want to add another umbrella like Employee<Individual>. it will just work.
+
+//the individual table slots into the two above types as a generic param, eg. Client<Individual>, Partner<Individual>. 
+//That Individual has its own record from its own table so it is technically the same Person as both a client and a partner
+
+//and theoretically you could take it further and go Client<Individual<Male<Human>>>, Client<Individual<Female<Xenomorph>>>
+
+
+
+
+
+
+
+
+
+
+
+
