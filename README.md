@@ -33,9 +33,13 @@ var res = new GenericRepository<Entity<Individual>>(context).Get();
 
 or
 
-repo.Get().OfType<Client<Individual>>().ToList().ForEach(x => Console.WriteLine(x.GetDisplayName()));
+repo.Get().OfType<Entity<Individual>>().ToList().ForEach(x => Console.WriteLine(x.GetDisplayName()));
 
-repo.Get().OfType<Client<Company>>().ToList().ForEach(x => Console.WriteLine(x.GetDisplayName()));
+repo.Get().OfType<Entity<Company>>().ToList().ForEach(x => Console.WriteLine(x.GetDisplayName()));
+
+repo.Get().OfType<Company>().ToList().ForEach(x => Console.WriteLine(x.GetDisplayName()));
+
+repo.Get().OfType<Individual>().ToList().ForEach(x => Console.WriteLine(x.GetDisplayName()));
 
 as seen working in: https://github.com/sebastianwhiffen/Generically-Typed-Entities-with-EF-Core
 
